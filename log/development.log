@@ -2843,3 +2843,398 @@ puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
 puma (3.12.1) lib/puma/server.rb:474:in `process_client'
 puma (3.12.1) lib/puma/server.rb:334:in `block in run'
 puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/clients/invitation/new.2" for 192.168.32.1 at 2020-11-02 20:37:02 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Clients::InvitationsController#new as 
+  [1m[36mClient Load (0.7ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering devise/invitations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (0.5ms)
+  Rendered devise/invitations/new.html.erb within layouts/application (102.3ms)
+Completed 200 OK in 338ms (Views: 334.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 192.168.32.1 at 2020-11-02 20:37:03 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/clients/invitation" for 192.168.32.1 at 2020-11-02 20:37:08 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Clients::InvitationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QUUH3/Emj4Ja1AjrdkAIkKYktoxsCYd2h2tLfgg0aAtSCGbw828CW6pVd/Q6Mgg3e3QyO9QpoivTvs5Aqqo5gw==", "client"=>{"email"=>"fhohlberg@uc.cl"}, "commit"=>"Send an invitation"}
+  [1m[36mClient Load (0.7ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mClient Load (3.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."email" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["email", "fhohlberg@uc.cl"], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mClient Load (2.8ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."invitation_token" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["invitation_token", "eb8cdd4a6521fcc3381bb085602d0e4eee083b4ab8fe5d1380ad98ca75f15915"], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mClient Update (3.9ms)[0m  [1m[33mUPDATE "clients" SET "invitation_token" = $1, "invitation_created_at" = $2, "invitation_sent_at" = $3, "updated_at" = $4 WHERE "clients"."id" = $5[0m  [["invitation_token", "eb8cdd4a6521fcc3381bb085602d0e4eee083b4ab8fe5d1380ad98ca75f15915"], ["invitation_created_at", "2020-11-02 20:37:08.096614"], ["invitation_sent_at", "2020-11-02 20:37:08.096614"], ["updated_at", "2020-11-02 20:37:08.098045"], ["id", 4]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering devise/mailer/invitation_instructions.html.erb
+  Rendered devise/mailer/invitation_instructions.html.erb (0.9ms)
+  Rendering devise/mailer/invitation_instructions.text.erb
+  Rendered devise/mailer/invitation_instructions.text.erb (0.8ms)
+Devise::Mailer#invitation_instructions: processed outbound mail in 129.2ms
+Sent mail to fhohlberg@uc.cl (2.4ms)
+Date: Mon, 02 Nov 2020 20:37:08 +0000
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: fhohlberg@uc.cl
+Message-ID: <5fa06df439c62_12ab9270ac85490635@9707b59ebdff.mail>
+Subject: Invitation instructions
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5fa06df4391fe_12ab9270ac8549056c";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5fa06df4391fe_12ab9270ac8549056c
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello fhohlberg@uc.cl
+
+
+http://localhost:3000/clients/invitation/accept?invitation_token=D_Qb6ryx3by-zZ5gUbSR
+
+
+If you don't want to accept the invitation, please ignore this email. Your account won't be created until you access the link above and set your password.
+
+----==_mimepart_5fa06df4391fe_12ab9270ac8549056c
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello fhohlberg@uc.cl</p>
+
+<p>Someone has invited you to http://localhost:3000/, you can accept it through the link below.</p>
+
+<p><a href="http://localhost:3000/clients/invitation/accept?invitation_token=D_Qb6ryx3by-zZ5gUbSR">Accept invitation</a></p>
+
+
+<p>If you don&#39;t want to accept the invitation, please ignore this email. Your account won&#39;t be created until you access the link above and set your password.</p>
+
+----==_mimepart_5fa06df4391fe_12ab9270ac8549056c--
+
+Redirected to http://localhost:8080/
+Completed 302 Found in 171ms (ActiveRecord: 11.1ms)
+
+
+Started GET "/" for 192.168.32.1 at 2020-11-02 20:37:08 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:37
+Completed 200 OK in 105ms (Views: 93.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 192.168.32.1 at 2020-11-02 20:37:08 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 192.168.32.1 at 2020-11-02 20:38:20 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+  [1m[36mClient Load (0.8ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:37
+Completed 200 OK in 228ms (Views: 211.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 192.168.32.1 at 2020-11-02 20:38:20 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/clients/2" for 192.168.32.1 at 2020-11-02 20:39:25 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ClientsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mClient Load (2.8ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clients_controller.rb:26
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering clients/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (1.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Client"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/clients/show.html.erb:14
+  Rendered clients/show.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 128ms (Views: 108.1ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 192.168.32.1 at 2020-11-02 20:39:26 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/clients/invitation/new.2" for 192.168.32.1 at 2020-11-02 20:39:30 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Clients::InvitationsController#new as 
+  [1m[36mClient Load (1.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering devise/invitations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (0.4ms)
+  Rendered devise/invitations/new.html.erb within layouts/application (104.4ms)
+Completed 200 OK in 311ms (Views: 307.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 192.168.32.1 at 2020-11-02 20:39:30 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/clients/invitation" for 192.168.32.1 at 2020-11-02 20:39:33 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Clients::InvitationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RrN9nKfVnOp9ivBsAFVOD+zl62RWqin6S9qUbt4iHtRV/hyzpZwRM40Lj3NMJ06oMbVv0+6KDKcfDxFQfLxPXA==", "client"=>{"email"=>"fhohlberg@uc.cl"}, "commit"=>"Send an invitation"}
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mClient Load (2.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."email" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["email", "fhohlberg@uc.cl"], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mClient Load (2.6ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."invitation_token" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["invitation_token", "5264b99d1070abd2fc2f2faeb00d2180682570e7a508c2b7eefcbc105562f3c1"], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mClient Update (3.0ms)[0m  [1m[33mUPDATE "clients" SET "invitation_token" = $1, "invitation_created_at" = $2, "invitation_sent_at" = $3, "updated_at" = $4 WHERE "clients"."id" = $5[0m  [["invitation_token", "5264b99d1070abd2fc2f2faeb00d2180682570e7a508c2b7eefcbc105562f3c1"], ["invitation_created_at", "2020-11-02 20:39:34.011911"], ["invitation_sent_at", "2020-11-02 20:39:34.011911"], ["updated_at", "2020-11-02 20:39:34.013288"], ["id", 4]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering devise/mailer/invitation_instructions.html.erb
+  Rendered devise/mailer/invitation_instructions.html.erb (0.8ms)
+  Rendering devise/mailer/invitation_instructions.text.erb
+  Rendered devise/mailer/invitation_instructions.text.erb (0.4ms)
+Devise::Mailer#invitation_instructions: processed outbound mail in 112.4ms
+Sent mail to fhohlberg@uc.cl (1.7ms)
+Date: Mon, 02 Nov 2020 20:39:34 +0000
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: fhohlberg@uc.cl
+Message-ID: <5fa06e86209e1_12ab9270ac5ac90888@9707b59ebdff.mail>
+Subject: Invitation instructions
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5fa06e86202bc_12ab9270ac5ac907b3";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5fa06e86202bc_12ab9270ac5ac907b3
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello fhohlberg@uc.cl
+
+
+http://localhost:3000/clients/invitation/accept?invitation_token=tdXwzfPj-VcNvNH-wJVz
+
+
+If you don't want to accept the invitation, please ignore this email. Your account won't be created until you access the link above and set your password.
+
+----==_mimepart_5fa06e86202bc_12ab9270ac5ac907b3
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello fhohlberg@uc.cl</p>
+
+<p>Someone has invited you to http://localhost:3000/, you can accept it through the link below.</p>
+
+<p><a href="http://localhost:3000/clients/invitation/accept?invitation_token=tdXwzfPj-VcNvNH-wJVz">Accept invitation</a></p>
+
+
+<p>If you don&#39;t want to accept the invitation, please ignore this email. Your account won&#39;t be created until you access the link above and set your password.</p>
+
+----==_mimepart_5fa06e86202bc_12ab9270ac5ac907b3--
+
+Redirected to http://localhost:8080/
+Completed 302 Found in 148ms (ActiveRecord: 9.4ms)
+
+
+Started GET "/" for 192.168.32.1 at 2020-11-02 20:39:34 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:37
+Completed 200 OK in 92ms (Views: 83.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 192.168.32.1 at 2020-11-02 20:39:34 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
