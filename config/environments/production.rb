@@ -82,6 +82,9 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
   config.require_master_key = true
 
+  config.action_mailer.default_url_options = { host: 'https://prueba-g52proyecto.herokuapp.com/' }
+
+
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
