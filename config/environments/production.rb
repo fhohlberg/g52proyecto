@@ -82,17 +82,11 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
   config.require_master_key = true
 
-  config.action_mailer.default_url_options = { host: 'https://prueba-g52proyecto.herokuapp.com' }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'website.com',
-    user_name:            'franhohlberg@gmail.com',
-    password:             'ciberfran123',
-    authentication:       'plain',
-    enable_starttls_auto: true
+  Rails.application.config.action_mailer.sendgrid_dev_settings = {
+    api_key: ENV['SENDGRID_API_KEY']
   }
+  config.action_mailer.default_url_options = { host: 'https://prueba-g52proyecto.herokuapp.com' }
+
 
 
   # Use a different logger for distributed setups.
