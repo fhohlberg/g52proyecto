@@ -1,0 +1,57 @@
+
+<center>
+<br>
+<br>
+<br>
+<br>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+<div class="heading-section ftco-animate mb-5 text-center">
+<span class="subheading"><%=current_client.username%></span>
+<h1>Mis Órdenes</h1>
+
+<div class="media">
+  <div class="media-body">
+    <table class="table table">
+      <thead class="thead-light">
+        <tr>
+          <th>Nombre Restaurante</th>
+          <th>Medio de Pago</th>
+          <th>Dirección</th>
+          <th>Hora de entrega</th>
+          <th>Estado</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.restaurante.name %></td>
+            <td><%= order.payment %></td>
+            <td><%= order.address %></td>
+            <% if order.delivery_time %>
+              <td><%= order.delivery_time.strftime("%X hrs.") %></td>
+            <% else %>
+              <td></td>
+            <% end%>
+            <td><%= order.status %></td>
+
+            <td><%= link_to "<i class=material-icons md-dark>visibility</i>".html_safe, restaurante_order_path(order.restaurante_id, order) %></td>
+            <% if current_client %>
+              <% if current_client.id == order.client_id && order.status == "Pendiente" %>
+                <td><%= link_to "<i class=material-icons md-dark>delete_sweep</i>".html_safe, restaurante_order_path(order.restaurante_id, order), method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<br>
+
+<%= link_to 'Ir a mi perfil', client_path(current_client.id) %>

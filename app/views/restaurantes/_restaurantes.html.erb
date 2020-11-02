@@ -1,0 +1,90 @@
+<center>
+<section class="ftco-section">
+
+<div class="heading-section ftco-animate mb-5 text-center">
+<span class="subheading">foodie order</span>
+<h1>Restaurantes</h1>
+</div>
+<br>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<head>
+<style>
+.pagination {
+  display: inline-block;
+}
+
+.pagination a,em,span {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.pagination a.active {
+  background-color: #c8a97e;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #c8a97e;
+  border-radius: 5px;
+}
+</style>
+</head>
+  <div class="container">
+    <div class="row no-gutters d-flex align-items-stretch">
+      <% @restaurantes.each do |restaurante| %>
+      <div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+        <div class="menus d-sm-flex ftco-animate align-items-stretch">
+          <% if restaurante.avatar.attached? %>
+          <div class="menu-img img" style="background-image: url(<%=url_for(restaurante.avatar)%>);" ></div>
+          <% end %>
+          <div class="text d-flex align-items-center">
+            <div>
+              <div class="d-flex">
+                <div class="one-half">
+                  <h3><%= restaurante.name %></h3>
+                </div>
+                <div class="one-forth">
+                  <td><%= link_to "<i class=material-icons md-dark>visibility</i>".html_safe, restaurante%></td>
+                </div>
+              </div>
+              <h4>
+              <% if !(restaurante.valoration1) || restaurante.valoration1 == 0 %>
+                <% 5.times do %>
+                  <i class=material-icons>star_border</i>
+                <% end %>
+              <% else %>
+                <% restaurante.valoration1.to_i.times do %>
+                  <i class=material-icons>star</i>
+                <% end %>
+                <% (5 - restaurante.valoration1.to_i).times do %>
+                  <i class=material-icons>star_border</i>
+                <% end %>
+              <% end%>
+              </h4>
+              <p><%= restaurante.adress %></p>
+              <p><i class=material-icons md-dark>phone_enabled</i><%= restaurante.phone_number %></p>
+              <% if current_client %>
+                <% if current_client.id == restaurante.client_id %>
+                  <td><%= link_to "<i class=material-icons md-dark>delete_sweep</i>".html_safe, restaurante, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+                <% end %>
+              <% end %>
+              <% if current_admin %>
+                <td><%= link_to "<i class=material-icons md-dark>delete_sweep</i>".html_safe, restaurante, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-10" center>
+    <p> <%= will_paginate @plates, :previous_label => 'Anterior  ', :next_label => '  Siguiente' %> </p>
+  </div>
+
+  <% if current_client %>
+    <p> <%= link_to "<i class=material-icons md-dark>add_box</i> Crear Restaurante".html_safe, new_restaurante_path%></p>
+  <% end %>

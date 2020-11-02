@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+<section class="ftco-section testimony-section img">
+<div class="overlay"></div>
+<div class="container">
+<div class="row justify-content-center mb-5">
+<div class="col-md-12 text-center heading-section ftco-animate">
+<span class="subheading">Testimonios</span>
+<h2 class="mb-4">Clientes Felices</h2>
+</div>
+</div>
+<div class="row ftco-animate justify-content-center">
+<div class="col-md-12">
+<div class="carousel-testimony owl-carousel ftco-owl">
+  <% @restaurant_comments.each do |restaurant_comment| %>
+    <div class="item">
+    <div class="testimony-wrap text-center pb-5">
+    <% if Client.find(restaurant_comment.client_id).avatar.attached? %>
+      <div class="user-img mb-4" style="background-image: url(<%=(url_for(Client.find(restaurant_comment.client_id).avatar))%>)">
+    <% else %>
+      <div class="user-img mb-4" style="background-image: url()">
+    <% end %>
+    <span class="quote d-flex align-items-center justify-content-center">
+    <i class="icon-quote-right"></i>
+    </span>
+    </div>
+    <div class="text p-3">
+    <p class="mb-4"><%= restaurant_comment.body %></p>
+    <p class="name"><i class=material-icons md-dark>account_circle</i><%= restaurant_comment.client_name %></p>
+    <p class="date"><%= restaurant_comment.created_at.strftime("%d-%m-%Y %X hrs.") %></p>
+    <% if current_client %>
+      <% if current_client.id == restaurant_comment.client_id %>
+        <td><%= link_to "<i class=material-icons md-dark>edit</i>".html_safe, edit_restaurante_restaurant_comment_path(@restaurante, restaurant_comment) %></td>
+        <td><%= link_to "<i class=material-icons md-dark>delete_sweep</i>".html_safe, restaurante_restaurant_comment_path(@restaurante, restaurant_comment), method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+      <% end %>
+      <p><%= restaurant_comment.clients_like.length().to_s %>  Me Gusta</p>
+      <% if !(restaurant_comment.clients_like.include?(current_client.id.to_s)) %>
+        <p><%= link_to "<i class=material-icons>favorite_border</i>".html_safe, restaurant_comments_like_path(:id => restaurant_comment.id, :restaurante_id => @restaurante), method: :post %></p>
+      <% else %>
+        <p><%= link_to "<i class=material-icons>favorite</i>".html_safe, restaurant_comments_dislike_path(:id => restaurant_comment.id, :restaurante_id => @restaurante), method: :post  %></p>
+      <% end %>
+    <% end %>
+    <% if current_admin && !(current_client) %>
+      <td><%= link_to "<i class=material-icons md-dark>delete_sweep</i>".html_safe, restaurante_restaurant_comment_path(@restaurante, restaurant_comment), method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+    <% end %>
+    </div>
+    </div>
+    </div>
+  <%end%>
+</div>
+</div>
+</div>
+</div>
+<center>
+<% if current_client %>
+  <%= link_to "<i class=material-icons md-dark>add_comment</i> Nuevo Comentario".html_safe, new_restaurante_restaurant_comment_path(@restaurante) %><br>
+<% end %>
+<%= link_to 'Atrás', restaurante_path(@restaurante) %>
+</section>

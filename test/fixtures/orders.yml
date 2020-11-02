@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  plates: MyText
+  price: 1
+  payment: MyString
+  address: MyText
+  delivery_time: 2019-10-13 23:45:41
+  status: MyString
+  notes: MyText
+  restaurante_id: 1
+  client_id: 1
+
+two:
+  plates: MyText
+  price: 1
+  payment: MyString
+  address: MyText
+  delivery_time: 2019-10-13 23:45:41
+  status: MyString
+  notes: MyText
+  restaurante_id: 1
+  client_id: 1

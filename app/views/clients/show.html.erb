@@ -1,0 +1,51 @@
+<center>
+<br>
+<br>
+<br>
+<br>
+
+<p id="notice"><%= notice %></p>
+
+<div class="heading-section ftco-animate mb-5 text-center">
+<span class="subheading"><%=@client.username%></span>
+<h1>Mi Perfil: </h1>
+
+
+  <% if @client.avatar.attached? %>
+      <div class="testimony-wrap text-center pb-5">
+      <div class="user-img" style="background-image: url(<%=(url_for(@client.avatar))%>)">
+      </div>
+  <% end %>
+</div>
+
+<p>
+  <strong>E-mail:</strong>
+  <%= @client.email %>
+</p>
+
+<p>
+  <strong>Nombre de Usuario:</strong>
+  <%= @client.username %>
+</p>
+
+<p>
+  <strong>Apellido de Usuario:</strong>
+  <%= @client.lastname %>
+</p>
+
+<p>
+  <strong>Dirección:</strong>
+  <%= @client.address %>
+</p>
+
+
+
+<% if current_client %>
+  <% if current_client.id == @client.id %>
+    <%= link_to 'Invitar', new_client_invitation_path(@client) %> |
+    <%= link_to 'Editar Cuenta', edit_client_registration_path(@client) %> |
+    <%= link_to 'Mis Órdenes', '/my_orders' %> |
+    <%= link_to 'Mis Favoritos', '/my_favs' %> |
+    <%= link_to 'Mis Restaurantes', '/my_restaurants' %>
+  <% end %>
+<% end %>

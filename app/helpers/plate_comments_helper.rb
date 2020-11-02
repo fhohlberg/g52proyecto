@@ -1,0 +1,2 @@
+module PlateCommentsHelper
+end

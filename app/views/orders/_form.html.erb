@@ -1,0 +1,61 @@
+<%= form_with(model: [@restaurante, order], local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+
+<section class="ftco-section img" style="background-image: url(https://colorlib.com/preview/theme/feliciano/images/bg_3.jpg)" data-stellar-background-ratio="0.5">
+    <div class="container">
+    <div class="col-md-7 ftco-animate makereservation p-4 px-md-7 pb-md-7 text-center">
+    <div class="heading-section ftco-animate mb-5 text-center">
+    <span class="subheading"><%=@restaurante.name%></span>
+    <h2 class="mb-4">Datos Orden</h2>
+    </div>
+
+    <div class="col-md-12">
+    <div class="form-group">
+      <div class="field">
+        <%= form.label :medio_de_pago %>
+        <%= form.select(:payment, ['Tarjeta de Credito', 'Tarjeta de Débito', 'Efectivo']) %>
+      </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+      <div class="field">
+        <%= form.label :dirección %>
+        <%= form.text_area :address, :value => current_client.address %>
+      </div>
+    </div>
+    </div>
+
+    <div class="col-md-12">
+    <div class="form-group">
+      <div class="field">
+        <%= form.label :notas_adicionales %>
+        <%= form.text_area :notes %>
+      </div>
+    </div>
+    </div>
+    <div class="col-md-12 mt-3">
+    <div class="form-group text-center">
+      <div class="actions">
+        <%= form.submit "Continuar", value: "Continuar", class: "btn btn-primary py-3 px-5"%>
+      </div>
+      <% end %>
+      <%= link_to 'Ir a Restaurant',restaurante_path(@restaurante) %>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>

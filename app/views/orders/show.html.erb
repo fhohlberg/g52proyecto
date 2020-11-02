@@ -1,0 +1,137 @@
+<center>
+<br>
+<br>
+<br>
+
+<section class="ftco-section ftco-wrap-about">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<div class="heading-section ftco-animate mb-5 text-center">
+  <span class="subheading"><%=@restaurante.name%></span>
+  <h1>Datos de la orden: </h1>
+</div>
+
+<% if current_client.id == @order.client_id && @order.status == "Pendiente"%>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 wrap-about pt-5 pt-md-5 pb-md-3 ftco-animate">
+      <% @plates.each do |plate| %>
+      <div class="col-md-20 col-lg-15 d-flex align-self-stretch">
+        <div class="menus d-sm-flex ftco-animate align-items-stretch">
+          <% if plate.avatar.attached? %>
+          <div class="menu-img img" style="background-image: url(<%=url_for(plate.avatar)%>);" ></div>
+          <% end %>
+          <div class="text d-flex align-items-center">
+            <div>
+              <div class="d-flex">
+                <div class="one-half">
+                  <h3><%= plate.name %></h3>
+                </div>
+                <div class="one-forth">
+                  <span class="price">$<%= plate.price %></span>
+                </div>
+              </div>
+              <p><%= plate.description %></p>
+              <%= form_tag(add_plates_path, method: :post) do |form| %>
+              <div class="form-group">
+                <div class="field">
+                  <%= select_tag(:portions, options_for_select([0,1,2,3,4,5,6,7,8,9]),{:prompt => "Cantidad", onchange: 'this.form.submit();'}) %>
+                  <%= hidden_field_tag(:id, @order.id)%>
+                  <%= hidden_field_tag(:restaurante_id, @restaurante.id)%>
+                  <%= hidden_field_tag(:id_plate, plate.id)%>
+                </div>
+              </div>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+<br>
+<% end %>
+</div>
+
+
+<div class="col-md-6 wrap-about pt-5 pt-md-5 pb-md-3 ftco-animate">
+  <div class="heading-section mb-4 my-5 my-md-0">
+    <p>
+      <strong>Platos:</strong><br>
+      <%  @order.plates.each do |p| %>
+        <tr>
+          <td><%= p.name%></td> -
+          <td>$<%= p.price  %></td>
+          <td>x<%= @order.order_plates.find_by(plate_id: p).plates_quantity%></td><br>
+      <% end  %>
+    </p>
+
+
+    <p>
+      <strong>Precio final:</strong>
+      $<%= @order.price %>
+    </p>
+
+    <p>
+      <strong>Medio de pago:</strong>
+      <%= @order.payment %>
+    </p>
+
+    <p>
+      <strong>Dirección:</strong>
+      <%= @order.address %>
+    </p>
+
+    <p>
+      <strong>Estado:</strong>
+      <%= @order.status %>
+    </p>
+
+    <p>
+      <% if current_client.id == @order.client_id && @order.status != "Pendiente" && @order.status != "Rechazada"%>
+        <strong>Hora estimada de entrega:</strong>
+        <%= @order.delivery_time.strftime("%X hrs.")%>
+      <% end %>
+    </p>
+
+
+    <p>
+      <strong>Notas:</strong>
+      <%= @order.notes %>
+    </p>
+
+    <p>
+      <% if (!current_client.id == @restaurante.client_id) %>
+        <strong>Restaurante:</strong>
+        <%= @order.restaurante_id %>
+      <% end %>
+
+    </p>
+
+    <p>
+      <% if current_client.id == @restaurante.client_id %>
+        <strong>Cliente:</strong>
+        <%= @order.client_id %>
+      <% end %>
+    </p>
+
+    <% if !(current_client.id == @restaurante.client_id) %>
+      <%= link_to 'Confirmar orden', my_orders_path(current_client.id), class: "btn btn-primary py-3 px-5" %>
+    <% end %>
+    <br>
+    <br>
+    <% if current_client.id == @order.client_id && @order.status == "Pendiente"%>
+      <%= link_to 'Editar Datos', edit_restaurante_order_path(@restaurante, @order) %> |
+    <% end %>
+
+    <% if current_client.id == @restaurante.client_id %>
+      <%= link_to 'Ir a restaurant', restaurante_orders_path(@restaurante) %>
+    <% else %>
+      <%= link_to 'Ir a mis órdenes',my_orders_path(current_client.id) %> |
+      <%= link_to 'Ir a mis Restaurant',restaurante_path(@restaurante) %>
+    <% end %>
+  </div>
+</div>
+</div>
+</div>
+</section>

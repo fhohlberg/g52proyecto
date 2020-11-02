@@ -1,0 +1,87 @@
+<center>
+<section class="ftco-section">
+  <head>
+<style>
+.pagination {
+  display: inline-block;
+}
+
+.pagination a,em,span {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.pagination a.active {
+  background-color: #c8a97e;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #c8a97e;
+  border-radius: 5px;
+}
+</style>
+</head>
+  <div class="container">
+    <div class="row no-gutters justify-content-center mb-5 pb-2">
+      <div class="col-md-12 text-center heading-section ftco-animate">
+        <span class="subheading"><%= @restaurante.name %></span>
+        <h2 class="mb-4">Nuestro Menu</h2>
+      </div>
+    </div>
+    <div class="row no-gutters d-flex align-items-stretch">
+      <% @plates.each do |plate| %>
+      <div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+        <div class="menus d-sm-flex ftco-animate align-items-stretch">
+          <% if plate.avatar.attached? %>
+          <div class="menu-img img" style="background-image: url(<%=url_for(plate.avatar)%>);" ></div>
+          <% end %>
+          <div class="text d-flex align-items-center">
+            <div>
+              <div class="d-flex">
+                <div class="one-half">
+                  <h3><%= plate.name %></h3>
+                </div>
+                <div class="one-forth">
+                  <span class="price">$<%= plate.price %></span>
+                </div>
+              </div>
+              <h4>
+              <% if !(plate.valoration) || plate.valoration == 0 %>
+                <% 5.times do %>
+                  <i class=material-icons>star_border</i>
+                <% end %>
+              <% else %>
+                <% plate.valoration.to_i.times do %>
+                  <i class=material-icons>star</i>
+                <% end %>
+                <% (5 - plate.valoration.to_i).times do %>
+                  <i class=material-icons>star_border</i>
+                <% end %>
+              <% end%>
+              </h4>
+              <p><%= plate.description %></p>
+              <td><%= link_to  "<i class=material-icons md-dark>visibility</i>".html_safe, restaurante_plate_path(@restaurante, plate) %></td>
+              <% if current_client %>
+                <% if current_client.id == @restaurante.client_id %>
+                  <td><%= link_to "<i class=material-icons md-dark>edit</i>".html_safe, edit_restaurante_plate_path(@restaurante, plate) %></td>
+                  <td><%= link_to "<i class=material-icons md-dark>delete_sweep</i>".html_safe, restaurante_plate_path(@restaurante, plate), method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+                <% end %>
+              <% end %>
+              <% if current_admin && !(current_client) %>
+                <td><%= link_to "<i class=material-icons md-dark>delete_sweep</i>".html_safe, restaurante_plate_path(@restaurante, plate), method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-10" center>
+    <p> <%= will_paginate @plates, :previous_label => 'Anterior  ', :next_label => '  Siguiente' %> </p>
+  </div>
+  <br>
+  <%= link_to 'Atrás', restaurante_path(@restaurante) %>

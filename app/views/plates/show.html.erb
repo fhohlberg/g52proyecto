@@ -1,0 +1,100 @@
+<p id="notice"><%= notice %></p>
+<center>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<section class="ftco-section ftco-wrap-about">
+<div class="heading-section ftco-animate mb-5 text-center">
+<span class="subheading"><%=@restaurante.name%></span>
+</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 wrap-about pt-5 pt-md-5 pb-md-3 ftco-animate">
+          <% if @plate.avatar.attached? %>
+            <image  src="<%=(url_for(@plate.avatar))%>" alt= "{{ row.2 }}" width="240" height="189" />
+          <% end %>
+      </div>
+      <div class="col-md-4 wrap-about pt-5 pt-md-5 pb-md-3 ftco-animate">
+        <p>
+          <strong>Nombre:</strong>
+          <%= @plate.name %>
+        </p>
+
+        <p>
+          <strong>Precio:</strong>
+          <%= @plate.price %>
+        </p>
+
+        <p>
+          <strong>Descripción:</strong>
+          <%= @plate.description %>
+        </p>
+
+        <p>
+          <strong>Porciones:</strong>
+          <%= @plate.portions %>
+        </p>
+
+        <p>
+          <strong>Valoración promedio:</strong><br>
+          <% if !(@plate.valoration) || @plate.valoration == 0 %>
+            <% 5.times do %>
+              <i class=material-icons>star_border</i>
+            <% end %>
+            <br>
+            No hay valoraciones
+          <% else %>
+            <% @plate.valoration.to_i.times do %>
+              <i class=material-icons>star</i>
+            <% end %>
+            <% (5 - @plate.valoration.to_i).times do %>
+              <i class=material-icons>star_border</i>
+            <% end %>
+            <br>
+            <%= @plate.ratings.length() %> valoracion/es
+          <% end%>
+        </p>
+      </div>
+
+      <div class="col-md-5 wrap-about pt-5 pt-md-5 pb-md-3 ftco-animate">
+        <div class="heading-section mb-4 my-5 my-md-0">
+          <p><%= link_to '<i class=material-icons>insert_comment</i> Ver Comentarios'.html_safe, restaurante_plate_plate_comments_path(@restaurante, @plate) %></p>
+          <% if current_client %>
+            <% if current_client.id == @restaurante.client_id %>
+              <p><%= link_to '<i class=material-icons>edit</i> Editar'.html_safe, edit_restaurante_plate_path(@restaurante, @plate) %></p>
+            <% end %>
+
+            <strong><a href="">Mi Valoración</a></strong><br>
+            <% if !(@plate.clients_ratings.include?(current_client.id.to_s))%>
+              <% 5.times do %>
+                <%= link_to '<i class=material-icons>star_border</i>'.html_safe, restaurante_plate_path(@restaurante, @plate)%>
+              <% end %>
+              <br>
+              <a href="">Sin estrellas</a>
+            <% else %>
+              <% @plate.ratings[@plate.clients_ratings.find_index(current_client.id.to_s)].to_i.times do %>
+                <%= link_to '<i class=material-icons>star</i>'.html_safe, restaurante_plate_path(@restaurante, @plate)%>
+              <% end %>
+              <% (5 - @plate.ratings[@plate.clients_ratings.find_index(current_client.id.to_s)].to_i).times do %>
+                <%= link_to '<i class=material-icons>star_border</i>'.html_safe, restaurante_path(@plate)%>
+              <% end %>
+              <br>
+              <a href=""><%=@plate.ratings[@plate.clients_ratings.find_index(current_client.id.to_s)]%></a>
+            <% end%>
+            <br>
+            <%= form_tag(plates_rating_path, method: :post) do |form| %>
+            <div class="form-group">
+              <div class="field">
+              <%= select_tag(:rate, options_for_select(['Sin valoración', '1 estrella','2 estrellas','3 estrellas','4 estrellas','5 estrellas']),{:prompt => "Actualizar valoración", onchange: 'this.form.submit();'}) %>
+              <%= hidden_field_tag(:restaurante_id, @restaurante.id)%>
+              <%= hidden_field_tag(:id, @plate.id)%>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+        <p><%= link_to 'Atrás', restaurante_plates_path(@restaurante) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

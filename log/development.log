@@ -1,0 +1,2128 @@
+  [1m[35m (971.4ms)[0m  [1m[35mCREATE DATABASE "Grupo52-proyecto_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:11
+  [1m[35m (1358.2ms)[0m  [1m[35mCREATE DATABASE "Grupo52-proyecto_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:11
+  [1m[35m (32.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:11
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3334969033128648930)[0m
+  ↳ bin/rails:11
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:11
+Migrating to CreatePlates (20190926005056)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (12.3ms)[0m  [1m[35mCREATE TABLE "plates" ("id" bigserial primary key, "name" character varying, "price" integer, "description" character varying, "portions" integer, "image" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190926005056_create_plates.rb:5
+  [1m[36mActiveRecord::SchemaMigration Create (2.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190926005056"]]
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to CreateRestaurantes (20190927194526)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (13.1ms)[0m  [1m[35mCREATE TABLE "restaurantes" ("id" bigserial primary key, "name" character varying, "mail" character varying, "adress" character varying, "valoration" character varying, "phone_number" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190927194526_create_restaurantes.rb:5
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190927194526"]]
+  ↳ bin/rails:11
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to CreateActiveStorageTables (20190928172212)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (10.5ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190928172212_create_active_storage_tables.active_storage.rb:6
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  ↳ db/migrate/20190928172212_create_active_storage_tables.active_storage.rb:6
+  [1m[35m (17.0ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  ↳ db/migrate/20190928172212_create_active_storage_tables.active_storage.rb:18
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  ↳ db/migrate/20190928172212_create_active_storage_tables.active_storage.rb:18
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  ↳ db/migrate/20190928172212_create_active_storage_tables.active_storage.rb:18
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190928172212"]]
+  ↳ bin/rails:11
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to DeviseCreateClients (20190928212352)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (11.2ms)[0m  [1m[35mCREATE TABLE "clients" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190928212352_devise_create_clients.rb:5
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_clients_on_email" ON "clients"  ("email")[0m
+  ↳ db/migrate/20190928212352_devise_create_clients.rb:38
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_clients_on_reset_password_token" ON "clients"  ("reset_password_token")[0m
+  ↳ db/migrate/20190928212352_devise_create_clients.rb:39
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190928212352"]]
+  ↳ bin/rails:11
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddUsernameToClients (20190928212955)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "clients" ADD "username" character varying[0m
+  ↳ db/migrate/20190928212955_add_username_to_clients.rb:5
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190928212955"]]
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to DeviseCreateAdmins (20190929195258)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (11.1ms)[0m  [1m[35mCREATE TABLE "admins" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190929195258_devise_create_admins.rb:5
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admins_on_email" ON "admins"  ("email")[0m
+  ↳ db/migrate/20190929195258_devise_create_admins.rb:38
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admins_on_reset_password_token" ON "admins"  ("reset_password_token")[0m
+  ↳ db/migrate/20190929195258_devise_create_admins.rb:39
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190929195258"]]
+  ↳ bin/rails:11
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddClientIdToRestaurantes (20191003162529)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "restaurantes" ADD "client_id" integer[0m
+  ↳ db/migrate/20191003162529_add_client_id_to_restaurantes.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191003162529"]]
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddRestauranteIdToPlate (20191003165215)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "plates" ADD "restaurante_id" integer[0m
+  ↳ db/migrate/20191003165215_add_restaurante_id_to_plate.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191003165215"]]
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddAddressToClient (20191005235849)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "clients" ADD "address" character varying[0m
+  ↳ db/migrate/20191005235849_add_address_to_client.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191005235849"]]
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to CreateOrders (20191013234541)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (11.5ms)[0m  [1m[35mCREATE TABLE "orders" ("id" bigserial primary key, "plates" text, "price" integer, "payment" character varying, "address" text, "delivery_time" time, "status" character varying, "notes" text, "restaurante_id" integer, "client_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20191013234541_create_orders.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191013234541"]]
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to CreateRestaurantComments (20191014184554)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (12.8ms)[0m  [1m[35mCREATE TABLE "restaurant_comments" ("id" bigserial primary key, "body" character varying, "client_name" character varying, "client_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20191014184554_create_restaurant_comments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191014184554"]]
+  ↳ bin/rails:11
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddRestauranteIdToRestaurantComment (20191014194123)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "restaurant_comments" ADD "restaurante_id" integer[0m
+  ↳ db/migrate/20191014194123_add_restaurante_id_to_restaurant_comment.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191014194123"]]
+  ↳ bin/rails:11
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to ChangeBodyToBeTextInRestaurantComments (20191014205614)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "restaurant_comments" ALTER COLUMN "body" TYPE text[0m
+  ↳ db/migrate/20191014205614_change_body_to_be_text_in_restaurant_comments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191014205614"]]
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to RemovePlatesFromOrders (20191017210404)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (3.4ms)[0m  [1m[35mALTER TABLE "orders" DROP COLUMN "plates"[0m
+  ↳ db/migrate/20191017210404_remove_plates_from_orders.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191017210404"]]
+  ↳ bin/rails:11
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddPlatosToOrders (20191017211042)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "orders" ADD "platos" character varying[] DEFAULT '{}'[0m
+  ↳ db/migrate/20191017211042_add_platos_to_orders.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191017211042"]]
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddFavoritesToClients (20191018191214)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "clients" ADD "favs" character varying[] DEFAULT '{}'[0m
+  ↳ db/migrate/20191018191214_add_favorites_to_clients.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191018191214"]]
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddLastnameToClients (20191027192134)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "clients" ADD "lastname" character varying[0m
+  ↳ db/migrate/20191027192134_add_lastname_to_clients.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191027192134"]]
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddPortionsToOrders (20191028042701)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "orders" ADD "portions" integer[0m
+  ↳ db/migrate/20191028042701_add_portions_to_orders.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191028042701"]]
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddPlatesToOrders (20191028151552)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "orders" ADD "hash_platos" json DEFAULT '"{}"' NOT NULL[0m
+  ↳ db/migrate/20191028151552_add_plates_to_orders.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191028151552"]]
+  ↳ bin/rails:11
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to CreatePlateComments (20191031202111)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (18.9ms)[0m  [1m[35mCREATE TABLE "plate_comments" ("id" bigserial primary key, "body" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20191031202111_create_plate_comments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191031202111"]]
+  ↳ bin/rails:11
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddPlateIdToPlateComment (20191031205255)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "plate_comments" ADD "plate_id" integer[0m
+  ↳ db/migrate/20191031205255_add_plate_id_to_plate_comment.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191031205255"]]
+  ↳ bin/rails:11
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddClientToPlateComment (20191031205419)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "plate_comments" ADD "client_id" integer[0m
+  ↳ db/migrate/20191031205419_add_client_to_plate_comment.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "plate_comments" ADD "client_name" character varying[0m
+  ↳ db/migrate/20191031205419_add_client_to_plate_comment.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191031205419"]]
+  ↳ bin/rails:11
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddAprovedToRestaurante (20191101214106)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "restaurantes" ADD "approved" boolean DEFAULT FALSE NOT NULL[0m
+  ↳ db/migrate/20191101214106_add_aproved_to_restaurante.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191101214106"]]
+  ↳ bin/rails:11
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to RemoveAprovedFromRestaurante (20191101214531)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "restaurantes" DROP COLUMN "approved"[0m
+  ↳ db/migrate/20191101214531_remove_aproved_from_restaurante.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191101214531"]]
+  ↳ bin/rails:11
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddApprovedToRestaurante (20191101215018)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "restaurantes" ADD "approved" boolean DEFAULT FALSE NOT NULL[0m
+  ↳ db/migrate/20191101215018_add_approved_to_restaurante.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191101215018"]]
+  ↳ bin/rails:11
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddClientsLikeToRestaunrantComments (20191110222517)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "restaurant_comments" ADD "clients_like" character varying[] DEFAULT '{}'[0m
+  ↳ db/migrate/20191110222517_add_clients_like_to_restaunrant_comments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191110222517"]]
+  ↳ bin/rails:11
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddClientsLikeToPlatesComments (20191110224135)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "plate_comments" ADD "clients_like" character varying[] DEFAULT '{}'[0m
+  ↳ db/migrate/20191110224135_add_clients_like_to_plates_comments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191110224135"]]
+  ↳ bin/rails:11
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddRatingsToRestaurantes (20191113214549)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "restaurantes" ADD "ratings" character varying[] DEFAULT '{}'[0m
+  ↳ db/migrate/20191113214549_add_ratings_to_restaurantes.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191113214549"]]
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddRateToRestaurantes (20191113222010)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "restaurantes" ADD "rate" character varying[0m
+  ↳ db/migrate/20191113222010_add_rate_to_restaurantes.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191113222010"]]
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to ChangeValorationInRestaurantes (20191113223328)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "restaurantes" ADD "valoration1" integer[0m
+  ↳ db/migrate/20191113223328_change_valoration_in_restaurantes.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191113223328"]]
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddClientsRatingsToRestaurantes (20191113225411)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "restaurantes" ADD "clients_ratings" character varying[] DEFAULT '{}'[0m
+  ↳ db/migrate/20191113225411_add_clients_ratings_to_restaurantes.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191113225411"]]
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddClientsRatingsToPlates (20191114015628)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "plates" ADD "clients_ratings" character varying[] DEFAULT '{}'[0m
+  ↳ db/migrate/20191114015628_add_clients_ratings_to_plates.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191114015628"]]
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddValorationToPlates (20191114015806)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "plates" ADD "valoration" integer[0m
+  ↳ db/migrate/20191114015806_add_valoration_to_plates.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191114015806"]]
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddRatingsToPlates (20191114020016)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "plates" ADD "ratings" character varying[] DEFAULT '{}'[0m
+  ↳ db/migrate/20191114020016_add_ratings_to_plates.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191114020016"]]
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddRateToPlates (20191114020122)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "plates" ADD "rate" character varying[0m
+  ↳ db/migrate/20191114020122_add_rate_to_plates.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191114020122"]]
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddQuantityToPlates (20191122033746)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "plates" ADD "quantity" integer[0m
+  ↳ db/migrate/20191122033746_add_quantity_to_plates.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191122033746"]]
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to CreateOrderPlates (20191125173334)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "order_plates" ("id" bigserial primary key, "order_id" bigint NOT NULL, "plate_id" bigint NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20191125173334_create_order_plates.rb:3
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE  INDEX  "index_order_plates_on_order_id" ON "order_plates"  ("order_id")[0m
+  ↳ db/migrate/20191125173334_create_order_plates.rb:3
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE  INDEX  "index_order_plates_on_plate_id" ON "order_plates"  ("plate_id")[0m
+  ↳ db/migrate/20191125173334_create_order_plates.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191125173334"]]
+  ↳ bin/rails:11
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to AddPlatesQuantityToOrderPlates (20191126181540)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "order_plates" ADD "plates_quantity" integer[0m
+  ↳ db/migrate/20191126181540_add_plates_quantity_to_order_plates.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191126181540"]]
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+Migrating to DeviseInvitableAddToClients (20201102174007)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "clients" ADD "invitation_token" character varying[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "clients" ADD "invitation_created_at" timestamp[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:5
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "clients" ADD "invitation_sent_at" timestamp[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:6
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "clients" ADD "invitation_accepted_at" timestamp[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:7
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "clients" ADD "invitation_limit" integer[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:8
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "clients" ADD "invited_by_type" character varying[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:9
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "clients" ADD "invited_by_id" bigint[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:9
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE  INDEX  "index_clients_on_invited_by_type_and_invited_by_id" ON "clients"  ("invited_by_type", "invited_by_id")[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:9
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "clients" ADD "invitations_count" integer DEFAULT 0[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:10
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE  INDEX  "index_clients_on_invitations_count" ON "clients"  ("invitations_count")[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:11
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_clients_on_invitation_token" ON "clients"  ("invitation_token")[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:12
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE  INDEX  "index_clients_on_invited_by_id" ON "clients"  ("invited_by_id")[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:13
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201102174007"]]
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+  [1m[36mActiveRecord::InternalMetadata Load (1.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:11
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[36mActiveRecord::InternalMetadata Create (1.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-02 17:45:41.738127"], ["updated_at", "2020-11-02 17:45:41.738127"]]
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(3334969033128648930)[0m
+  ↳ bin/rails:11
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:11
+Started GET "/" for 172.28.0.1 at 2020-11-02 18:11:13 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.3) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3334969033128648930)[0m
+  ↳ bin/rails:11
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:11
+Migrating to DeviseInvitableAddToClients (20201102174007)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (8.5ms)[0m  [1m[35mALTER TABLE "clients" ADD "invitation_token" character varying[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "clients" ADD "invitation_created_at" timestamp[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:5
+  [1m[35m (2.5ms)[0m  [1m[35mALTER TABLE "clients" ADD "invitation_sent_at" timestamp[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:6
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "clients" ADD "invitation_accepted_at" timestamp[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:7
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "clients" ADD "invitation_limit" integer[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:8
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "clients" ADD "invited_by_type" character varying[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "clients" ADD "invited_by_id" bigint[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:9
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE  INDEX  "index_clients_on_invited_by_type_and_invited_by_id" ON "clients"  ("invited_by_type", "invited_by_id")[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:9
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "clients" ADD "invitations_count" integer DEFAULT 0[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:10
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE  INDEX  "index_clients_on_invitations_count" ON "clients"  ("invitations_count")[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:11
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_clients_on_invitation_token" ON "clients"  ("invitation_token")[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:12
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE  INDEX  "index_clients_on_invited_by_id" ON "clients"  ("invited_by_id")[0m
+  ↳ db/migrate/20201102174007_devise_invitable_add_to_clients.rb:13
+  [1m[36mActiveRecord::SchemaMigration Create (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201102174007"]]
+  ↳ bin/rails:11
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+  [1m[36mActiveRecord::InternalMetadata Load (3.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(3334969033128648930)[0m
+  ↳ bin/rails:11
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:11
+Started GET "/" for 172.28.0.1 at 2020-11-02 18:11:57 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 1327ms (Views: 1304.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:11:59 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:11:59 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/clients/sign_in" for 172.28.0.1 at 2020-11-02 18:12:08 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Clients::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (1979.4ms)
+Completed 200 OK in 2165ms (Views: 2106.4ms | ActiveRecord: 28.2ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:12:10 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/clients/password/new" for 172.28.0.1 at 2020-11-02 18:12:16 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::PasswordsController#new as HTML
+  Rendering devise/passwords/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (0.6ms)
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/passwords/new.html.erb within layouts/application (34.0ms)
+Completed 200 OK in 190ms (Views: 174.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:12:16 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/clients/password" for 172.28.0.1 at 2020-11-02 18:12:31 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::PasswordsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UNmaJAdjHMAeUQOp4mdGl/bxI+JpHEyGylb0ajYUSaI8CCGh+Tbp/Ye0JEuOIm61BelhkBQvA2Qi9viYB/4ViQ==", "client"=>{"email"=>"fhohlberg@uc.cl"}, "commit"=>"Envíame instrucciones para resetear contraseña"}
+  [1m[36mClient Load (10.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."email" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["email", "fhohlberg@uc.cl"], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering devise/passwords/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (0.7ms)
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/passwords/new.html.erb within layouts/application (26.5ms)
+Completed 200 OK in 211ms (Views: 158.0ms | ActiveRecord: 10.7ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:12:32 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/clients/sign_up" for 172.28.0.1 at 2020-11-02 18:12:41 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Clients::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (0.5ms)
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (41.2ms)
+Completed 200 OK in 173ms (Views: 171.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:12:41 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for 172.28.0.1 at 2020-11-02 18:13:14 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 131ms (Views: 117.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:13:14 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/restaurantes" for 172.28.0.1 at 2020-11-02 18:13:16 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RestaurantesController#index as HTML
+  Rendering restaurantes/index.html.erb within layouts/application
+  [1m[36mRestaurante Load (4.2ms)[0m  [1m[34mSELECT  "restaurantes".* FROM "restaurantes" WHERE "restaurantes"."approved" = $1 ORDER BY "restaurantes"."name" ASC LIMIT $2 OFFSET $3[0m  [["approved", true], ["LIMIT", 4], ["OFFSET", 0]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:37
+  [1m[36mActiveStorage::Attachment Load (6.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "Restaurante"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:40
+  [1m[36mActiveStorage::Blob Load (4.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:40
+  [1m[36mActiveStorage::Attachment Load (1.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Restaurante"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:40
+  [1m[36mActiveStorage::Blob Load (1.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:40
+  [1m[36mActiveStorage::Attachment Load (1.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Restaurante"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:40
+  [1m[36mActiveStorage::Blob Load (1.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:40
+  [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Restaurante"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:40
+  [1m[36mActiveStorage::Blob Load (1.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:40
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurantes" WHERE "restaurantes"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:85
+  Rendered restaurantes/_restaurantes.html.erb (227.1ms)
+  Rendered restaurantes/index.html.erb within layouts/application (239.7ms)
+Completed 200 OK in 401ms (Views: 322.6ms | ActiveRecord: 50.6ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:13:16 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:13:18 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5ac861be0225f22700cd54d74f5979316628c350/rest_6.jpeg" for 172.28.0.1 at 2020-11-02 18:13:18 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9c65f30339f711a998da588e949271acff119f18/rest_1.jpg" for 172.28.0.1 at 2020-11-02 18:13:18 +0000
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f2f9809cf734b66f641617768d7cca42abe850f0/rest_9.jpeg" for 172.28.0.1 at 2020-11-02 18:13:18 +0000
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7abafdd4d7afe45e58f3094be9c2bcd77b54afcc/rest_10.jpg" for 172.28.0.1 at 2020-11-02 18:13:18 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5ac861be0225f22700cd54d74f5979316628c350", "filename"=>"rest_6"}
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7abafdd4d7afe45e58f3094be9c2bcd77b54afcc", "filename"=>"rest_10"}
+Processing by ActiveStorage::BlobsController#show as JPEG
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f2f9809cf734b66f641617768d7cca42abe850f0", "filename"=>"rest_9"}
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9c65f30339f711a998da588e949271acff119f18", "filename"=>"rest_1"}
+  [1m[36mActiveStorage::Blob Load (4.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (6.8ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (7.8ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (1.1ms) [0m[34mGenerated URL for file at key: 4eFsMcUStxANqXqeucnXioUb (http://localhost:8080/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWROR1ZHYzAxalZWTjBlRUZPY1ZoeFpYVmpibGhwYjFWaUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4NUxtcHdaV2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZPUzVxY0dWbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDcxWiIsInB1ciI6ImJsb2Jfa2V5In19--7ccfbc71906639a765c5f2f5f015e8253d7434d2/rest_9.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22rest_9.jpeg%22%3B+filename%2A%3DUTF-8%27%27rest_9.jpeg)[0m
+Redirected to http://localhost:8080/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWROR1ZHYzAxalZWTjBlRUZPY1ZoeFpYVmpibGhwYjFWaUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4NUxtcHdaV2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZPUzVxY0dWbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDcxWiIsInB1ciI6ImJsb2Jfa2V5In19--7ccfbc71906639a765c5f2f5f015e8253d7434d2/rest_9.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22rest_9.jpeg%22%3B+filename%2A%3DUTF-8%27%27rest_9.jpeg
+Completed 302 Found in 29ms (ActiveRecord: 6.3ms)
+
+
+  [1m[36mActiveStorage::Blob Load (5.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.5ms) [0m[34mGenerated URL for file at key: UQGSNkG1bvQQDu8M1Bh9PcNh (http://localhost:8080/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWVkZIVTA1clJ6RmlkbEZSUkhVNFRURkNhRGxRWTA1b0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4eE1DNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZNVEF1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDc3WiIsInB1ciI6ImJsb2Jfa2V5In19--60c9098d4bc76ad84a3cb2106420e9ae4fb1ad60/rest_10.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22rest_10.jpg%22%3B+filename%2A%3DUTF-8%27%27rest_10.jpg)[0m
+Redirected to http://localhost:8080/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWVkZIVTA1clJ6RmlkbEZSUkhVNFRURkNhRGxRWTA1b0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4eE1DNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZNVEF1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDc3WiIsInB1ciI6ImJsb2Jfa2V5In19--60c9098d4bc76ad84a3cb2106420e9ae4fb1ad60/rest_10.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22rest_10.jpg%22%3B+filename%2A%3DUTF-8%27%27rest_10.jpg
+Completed 302 Found in 38ms (ActiveRecord: 6.7ms)
+
+
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWROR1ZHYzAxalZWTjBlRUZPY1ZoeFpYVmpibGhwYjFWaUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4NUxtcHdaV2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZPUzVxY0dWbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDcxWiIsInB1ciI6ImJsb2Jfa2V5In19--7ccfbc71906639a765c5f2f5f015e8253d7434d2/rest_9.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22rest_9.jpeg%22%3B+filename%2A%3DUTF-8%27%27rest_9.jpeg" for 172.28.0.1 at 2020-11-02 18:13:18 +0000
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.4ms) [0m[34mGenerated URL for file at key: VkU6sVMXEZd1A9FQ76SChA8q (http://localhost:8080/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWbXRWTm5OV1RWaEZXbVF4UVRsR1VUYzJVME5vUVRoeEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4MkxtcHdaV2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZOaTVxY0dWbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDg3WiIsInB1ciI6ImJsb2Jfa2V5In19--ee13d4fd2e05e4162adbd20931f72963255a379e/rest_6.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22rest_6.jpeg%22%3B+filename%2A%3DUTF-8%27%27rest_6.jpeg)[0m
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+[36m  Disk Storage (0.8ms) [0m[34mGenerated URL for file at key: 2DnFN1HLrx2EZtfzf9mJUYRB (http://localhost:8080/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRNa1J1Ums0eFNFeHllREpGV25SbWVtWTViVXBWV1ZKQ0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSS9hVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4eExtcHdaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuY21WemRGOHhMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVIiwiZXhwIjoiMjAyMC0xMS0wMlQxODoxODoxOC40ODNaIiwicHVyIjoiYmxvYl9rZXkifX0=--6bbd7b9df7c1cd502a774bb8dbe325195c8f940c/rest_1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22rest_1.jpg%22%3B+filename%2A%3DUTF-8%27%27rest_1.jpg)[0m
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWVkZIVTA1clJ6RmlkbEZSUkhVNFRURkNhRGxRWTA1b0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4eE1DNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZNVEF1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDc3WiIsInB1ciI6ImJsb2Jfa2V5In19--60c9098d4bc76ad84a3cb2106420e9ae4fb1ad60/rest_10.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22rest_10.jpg%22%3B+filename%2A%3DUTF-8%27%27rest_10.jpg" for 172.28.0.1 at 2020-11-02 18:13:18 +0000
+Redirected to http://localhost:8080/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWbXRWTm5OV1RWaEZXbVF4UVRsR1VUYzJVME5vUVRoeEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4MkxtcHdaV2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZOaTVxY0dWbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDg3WiIsInB1ciI6ImJsb2Jfa2V5In19--ee13d4fd2e05e4162adbd20931f72963255a379e/rest_6.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22rest_6.jpeg%22%3B+filename%2A%3DUTF-8%27%27rest_6.jpeg
+Completed 302 Found in 54ms (ActiveRecord: 7.0ms)
+
+
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Redirected to http://localhost:8080/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRNa1J1Ums0eFNFeHllREpGV25SbWVtWTViVXBWV1ZKQ0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSS9hVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4eExtcHdaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuY21WemRGOHhMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVIiwiZXhwIjoiMjAyMC0xMS0wMlQxODoxODoxOC40ODNaIiwicHVyIjoiYmxvYl9rZXkifX0=--6bbd7b9df7c1cd502a774bb8dbe325195c8f940c/rest_1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22rest_1.jpg%22%3B+filename%2A%3DUTF-8%27%27rest_1.jpg
+Completed 302 Found in 53ms (ActiveRecord: 9.5ms)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"rest_10.jpg\"; filename*=UTF-8''rest_10.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWVkZIVTA1clJ6RmlkbEZSUkhVNFRURkNhRGxRWTA1b0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4eE1DNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZNVEF1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDc3WiIsInB1ciI6ImJsb2Jfa2V5In19--60c9098d4bc76ad84a3cb2106420e9ae4fb1ad60", "filename"=>"rest_10"}
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"rest_9.jpeg\"; filename*=UTF-8''rest_9.jpeg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWROR1ZHYzAxalZWTjBlRUZPY1ZoeFpYVmpibGhwYjFWaUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4NUxtcHdaV2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZPUzVxY0dWbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDcxWiIsInB1ciI6ImJsb2Jfa2V5In19--7ccfbc71906639a765c5f2f5f015e8253d7434d2", "filename"=>"rest_9"}
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWbXRWTm5OV1RWaEZXbVF4UVRsR1VUYzJVME5vUVRoeEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4MkxtcHdaV2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZOaTVxY0dWbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDg3WiIsInB1ciI6ImJsb2Jfa2V5In19--ee13d4fd2e05e4162adbd20931f72963255a379e/rest_6.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22rest_6.jpeg%22%3B+filename%2A%3DUTF-8%27%27rest_6.jpeg" for 172.28.0.1 at 2020-11-02 18:13:18 +0000
+Completed 200 OK in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRNa1J1Ums0eFNFeHllREpGV25SbWVtWTViVXBWV1ZKQ0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSS9hVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4eExtcHdaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuY21WemRGOHhMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVIiwiZXhwIjoiMjAyMC0xMS0wMlQxODoxODoxOC40ODNaIiwicHVyIjoiYmxvYl9rZXkifX0=--6bbd7b9df7c1cd502a774bb8dbe325195c8f940c/rest_1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22rest_1.jpg%22%3B+filename%2A%3DUTF-8%27%27rest_1.jpg" for 172.28.0.1 at 2020-11-02 18:13:18 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Completed 200 OK in 7ms (ActiveRecord: 0.0ms)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"rest_1.jpg\"; filename*=UTF-8''rest_1.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRNa1J1Ums0eFNFeHllREpGV25SbWVtWTViVXBWV1ZKQ0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSS9hVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4eExtcHdaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuY21WemRGOHhMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVIiwiZXhwIjoiMjAyMC0xMS0wMlQxODoxODoxOC40ODNaIiwicHVyIjoiYmxvYl9rZXkifX0=--6bbd7b9df7c1cd502a774bb8dbe325195c8f940c", "filename"=>"rest_1"}
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"rest_6.jpeg\"; filename*=UTF-8''rest_6.jpeg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWbXRWTm5OV1RWaEZXbVF4UVRsR1VUYzJVME5vUVRoeEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4MkxtcHdaV2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZOaTVxY0dWbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDg3WiIsInB1ciI6ImJsb2Jfa2V5In19--ee13d4fd2e05e4162adbd20931f72963255a379e", "filename"=>"rest_6"}
+Completed 200 OK in 4ms (ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/restaurantes/9" for 172.28.0.1 at 2020-11-02 18:13:22 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RestaurantesController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mRestaurante Load (3.5ms)[0m  [1m[34mSELECT  "restaurantes".* FROM "restaurantes" WHERE "restaurantes"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurantes_controller.rb:157
+  Rendering restaurantes/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (4.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "Restaurante"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/show.html.erb:16
+  [1m[36mActiveStorage::Blob Load (1.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/show.html.erb:16
+  Rendered restaurantes/show.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 151ms (Views: 125.7ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:13:22 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:13:23 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWROR1ZHYzAxalZWTjBlRUZPY1ZoeFpYVmpibGhwYjFWaUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4NUxtcHdaV2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZPUzVxY0dWbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDcxWiIsInB1ciI6ImJsb2Jfa2V5In19--7ccfbc71906639a765c5f2f5f015e8253d7434d2/rest_9.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22rest_9.jpeg%22%3B+filename%2A%3DUTF-8%27%27rest_9.jpeg" for 172.28.0.1 at 2020-11-02 18:13:23 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"rest_9.jpeg\"; filename*=UTF-8''rest_9.jpeg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWROR1ZHYzAxalZWTjBlRUZPY1ZoeFpYVmpibGhwYjFWaUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4NUxtcHdaV2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZPUzVxY0dWbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDcxWiIsInB1ciI6ImJsb2Jfa2V5In19--7ccfbc71906639a765c5f2f5f015e8253d7434d2", "filename"=>"rest_9"}
+Completed 304 Not Modified in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 172.28.0.1 at 2020-11-02 18:14:13 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 135ms (Views: 122.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:14:13 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/clients" for 172.28.0.1 at 2020-11-02 18:14:22 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ClientsController#index as HTML
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (4.9ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:29
+  Rendered clients/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 111ms (Views: 101.3ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:14:23 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:14:23 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/clients/sign_in" for 172.28.0.1 at 2020-11-02 18:14:32 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Clients::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 167ms (Views: 165.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:14:32 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/clients/sign_in" for 172.28.0.1 at 2020-11-02 18:14:40 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Clients::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"d0fa2J8wiwuuEsRqbTre0UrZ03m2QEr5vZgG4mV/FQEblmFdYWV+Njf344gBf/bzucGRC8tzBRtVOAoQVJVJKg==", "client"=>{"email"=>"fran@uc.cl", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Iniciar Sesión"}
+  [1m[36mClient Load (3.7ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."email" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["email", "fran@uc.cl"], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 126ms (ActiveRecord: 3.7ms)
+
+
+Processing by Clients::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"d0fa2J8wiwuuEsRqbTre0UrZ03m2QEr5vZgG4mV/FQEblmFdYWV+Njf344gBf/bzucGRC8tzBRtVOAoQVJVJKg==", "client"=>{"email"=>"fran@uc.cl", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Iniciar Sesión"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 228ms (Views: 127.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:14:41 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/clients/sign_in" for 172.28.0.1 at 2020-11-02 18:14:55 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Clients::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fMpVr7FPQxtLLDkl6nfKiPjlrLsXi4ZC1YeavJfYfJYQG+4qTxq2JtLJHseGMuKqC/3uyWq4yaA9J5ZOpjIgvQ==", "client"=>{"email"=>"fran@uc.cl", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Iniciar Sesión"}
+  [1m[36mClient Load (2.9ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."email" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["email", "fran@uc.cl"], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:8080/
+Completed 302 Found in 132ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/" for 172.28.0.1 at 2020-11-02 18:14:55 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  [1m[36mClient Load (2.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:37
+Completed 200 OK in 119ms (Views: 107.9ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:14:55 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/clients/2" for 172.28.0.1 at 2020-11-02 18:15:01 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ClientsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mClient Load (3.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clients_controller.rb:26
+  [1m[36mClient Load (2.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering clients/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (2.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Client"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/clients/show.html.erb:14
+  Rendered clients/show.html.erb within layouts/application (21.6ms)
+Completed 200 OK in 157ms (Views: 134.9ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:15:01 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/my_favs" for 172.28.0.1 at 2020-11-02 18:15:06 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ClientsController#myfavs as HTML
+  [1m[36mClient Load (3.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clients_controller.rb:16
+  [1m[36mRestaurante Load (1.3ms)[0m  [1m[34mSELECT  "restaurantes".* FROM "restaurantes" WHERE "restaurantes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clients_controller.rb:17
+  Rendering clients/myfavs.html.erb within layouts/application
+  Rendered clients/myfavs.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 164ms (Views: 139.8ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:15:07 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:15:07 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/restaurantes" for 172.28.0.1 at 2020-11-02 18:15:12 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RestaurantesController#index as HTML
+  Rendering restaurantes/index.html.erb within layouts/application
+  [1m[36mRestaurante Load (1.8ms)[0m  [1m[34mSELECT  "restaurantes".* FROM "restaurantes" WHERE "restaurantes"."approved" = $1 ORDER BY "restaurantes"."name" ASC LIMIT $2 OFFSET $3[0m  [["approved", true], ["LIMIT", 4], ["OFFSET", 0]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:37
+  [1m[36mActiveStorage::Attachment Load (2.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "Restaurante"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:40
+  [1m[36mActiveStorage::Blob Load (3.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:40
+  [1m[36mClient Load (3.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:69
+  [1m[36mActiveStorage::Attachment Load (1.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Restaurante"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:40
+  [1m[36mActiveStorage::Blob Load (2.6ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:40
+  [1m[36mActiveStorage::Attachment Load (3.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Restaurante"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:40
+  [1m[36mActiveStorage::Blob Load (1.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:40
+  [1m[36mActiveStorage::Attachment Load (2.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Restaurante"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:40
+  [1m[36mActiveStorage::Blob Load (1.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:40
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurantes" WHERE "restaurantes"."approved" = $1[0m  [["approved", true]]
+  ↳ app/views/restaurantes/_restaurantes.html.erb:85
+  Rendered restaurantes/_restaurantes.html.erb (59.3ms)
+  Rendered restaurantes/index.html.erb within layouts/application (75.5ms)
+Completed 200 OK in 265ms (Views: 223.9ms | ActiveRecord: 25.6ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:15:12 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:15:13 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWVkZIVTA1clJ6RmlkbEZSUkhVNFRURkNhRGxRWTA1b0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4eE1DNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZNVEF1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDc3WiIsInB1ciI6ImJsb2Jfa2V5In19--60c9098d4bc76ad84a3cb2106420e9ae4fb1ad60/rest_10.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22rest_10.jpg%22%3B+filename%2A%3DUTF-8%27%27rest_10.jpg" for 172.28.0.1 at 2020-11-02 18:15:13 +0000
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWROR1ZHYzAxalZWTjBlRUZPY1ZoeFpYVmpibGhwYjFWaUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4NUxtcHdaV2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZPUzVxY0dWbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDcxWiIsInB1ciI6ImJsb2Jfa2V5In19--7ccfbc71906639a765c5f2f5f015e8253d7434d2/rest_9.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22rest_9.jpeg%22%3B+filename%2A%3DUTF-8%27%27rest_9.jpeg" for 172.28.0.1 at 2020-11-02 18:15:13 +0000
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWbXRWTm5OV1RWaEZXbVF4UVRsR1VUYzJVME5vUVRoeEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4MkxtcHdaV2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZOaTVxY0dWbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDg3WiIsInB1ciI6ImJsb2Jfa2V5In19--ee13d4fd2e05e4162adbd20931f72963255a379e/rest_6.jpeg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22rest_6.jpeg%22%3B+filename%2A%3DUTF-8%27%27rest_6.jpeg" for 172.28.0.1 at 2020-11-02 18:15:13 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRNa1J1Ums0eFNFeHllREpGV25SbWVtWTViVXBWV1ZKQ0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSS9hVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4eExtcHdaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuY21WemRGOHhMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVIiwiZXhwIjoiMjAyMC0xMS0wMlQxODoxODoxOC40ODNaIiwicHVyIjoiYmxvYl9rZXkifX0=--6bbd7b9df7c1cd502a774bb8dbe325195c8f940c/rest_1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22rest_1.jpg%22%3B+filename%2A%3DUTF-8%27%27rest_1.jpg" for 172.28.0.1 at 2020-11-02 18:15:13 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveStorage::DiskController#show as JPEG
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"rest_6.jpeg\"; filename*=UTF-8''rest_6.jpeg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWbXRWTm5OV1RWaEZXbVF4UVRsR1VUYzJVME5vUVRoeEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4MkxtcHdaV2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZOaTVxY0dWbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDg3WiIsInB1ciI6ImJsb2Jfa2V5In19--ee13d4fd2e05e4162adbd20931f72963255a379e", "filename"=>"rest_6"}
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"rest_10.jpg\"; filename*=UTF-8''rest_10.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWVkZIVTA1clJ6RmlkbEZSUkhVNFRURkNhRGxRWTA1b0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4eE1DNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZNVEF1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDc3WiIsInB1ciI6ImJsb2Jfa2V5In19--60c9098d4bc76ad84a3cb2106420e9ae4fb1ad60", "filename"=>"rest_10"}
+Completed 304 Not Modified in 9ms (ActiveRecord: 0.0ms)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"rest_9.jpeg\"; filename*=UTF-8''rest_9.jpeg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWROR1ZHYzAxalZWTjBlRUZPY1ZoeFpYVmpibGhwYjFWaUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4NUxtcHdaV2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNKbGMzUmZPUzVxY0dWbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMjAtMTEtMDJUMTg6MTg6MTguNDcxWiIsInB1ciI6ImJsb2Jfa2V5In19--7ccfbc71906639a765c5f2f5f015e8253d7434d2", "filename"=>"rest_9"}
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"rest_1.jpg\"; filename*=UTF-8''rest_1.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRNa1J1Ums0eFNFeHllREpGV25SbWVtWTViVXBWV1ZKQ0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSS9hVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbVZ6ZEY4eExtcHdaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuY21WemRGOHhMbXB3WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraUQybHRZV2RsTDJwd1pXY0dPd1pVIiwiZXhwIjoiMjAyMC0xMS0wMlQxODoxODoxOC40ODNaIiwicHVyIjoiYmxvYl9rZXkifX0=--6bbd7b9df7c1cd502a774bb8dbe325195c8f940c", "filename"=>"rest_1"}
+Completed 304 Not Modified in 5ms (ActiveRecord: 0.0ms)
+
+
+Completed 304 Not Modified in 3ms (ActiveRecord: 0.0ms)
+
+
+Completed 304 Not Modified in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/clients/2" for 172.28.0.1 at 2020-11-02 18:15:18 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ClientsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mClient Load (7.6ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clients_controller.rb:26
+  [1m[36mClient Load (2.9ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering clients/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (4.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Client"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/clients/show.html.erb:14
+  Rendered clients/show.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 141ms (Views: 110.7ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:15:18 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/clients" for 172.28.0.1 at 2020-11-02 18:15:21 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ClientsController#index as HTML
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (2.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:29
+  Rendered clients/index.html.erb within layouts/application (5.2ms)
+  [1m[36mClient Load (3.9ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:37
+Completed 200 OK in 117ms (Views: 103.0ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:15:22 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:15:22 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/ojl" for 172.28.0.1 at 2020-11-02 18:18:01 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/ojl"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/rails/info/routes?path=in" for 172.28.0.1 at 2020-11-02 18:18:13 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"in"}
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/routes?path=inv" for 172.28.0.1 at 2020-11-02 18:18:13 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"inv"}
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 172.28.0.1 at 2020-11-02 18:19:38 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+  [1m[36mClient Load (9.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:37
+Completed 200 OK in 736ms (Views: 693.7ms | ActiveRecord: 28.1ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:19:39 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/clients/2" for 172.28.0.1 at 2020-11-02 18:19:43 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ClientsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mClient Load (2.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clients_controller.rb:26
+  [1m[36mClient Load (2.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering clients/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (3.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Client"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/clients/show.html.erb:14
+  Rendered clients/show.html.erb within layouts/application (28.2ms)
+Completed 200 OK in 156ms (Views: 127.3ms | ActiveRecord: 14.9ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:19:44 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/clients/invitation/new.2" for 172.28.0.1 at 2020-11-02 18:19:47 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (uninitialized constant Clients::InvitationsController):
+  
+bootsnap (1.4.5) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant'
+bootsnap (1.4.5) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.4.5) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant'
+bootsnap (1.4.5) lib/bootsnap/load_path_cache/core_ext/active_support.rb:58:in `load_missing_constant'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:285:in `const_get'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:285:in `block in constantize'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/mapper.rb:18:in `block in <class:Constraints>'
+actionpack (5.2.3) lib/action_dispatch/routing/mapper.rb:48:in `serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:840:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+actionpack (5.2.3) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.7) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.7) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.3) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:20:50 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/clients/invitation/new.2" for 172.28.0.1 at 2020-11-02 18:25:28 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Clients::InvitationsController#new as 
+  [1m[36mClient Load (2.9ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering devise/invitations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (0.7ms)
+  Rendered devise/invitations/new.html.erb within layouts/application (444.0ms)
+Completed 200 OK in 647ms (Views: 641.4ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:25:29 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/clients/invitation" for 172.28.0.1 at 2020-11-02 18:25:38 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Clients::InvitationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2VLyxjuEC8od/Mx+cZKYsR4GKqHJfDEwWoJoxB7Lr+/KH5PpOc2GE+19s2E94JgWw1auFnFcFG0OV+36vFX+Zw==", "client"=>{"email"=>"fhohlberg@uc.cl"}, "commit"=>"Send an invitation"}
+  [1m[36mClient Load (3.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mClient Load (3.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."email" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["email", "fhohlberg@uc.cl"], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mClient Load (3.8ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."invitation_token" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["invitation_token", "6ac3d28ca264a6014b16fcb68daed9b1baeb9082d7b13f67e4707ce2cb9f655a"], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mClient Create (4.4ms)[0m  [1m[32mINSERT INTO "clients" ("email", "encrypted_password", "created_at", "updated_at", "invitation_token", "invitation_created_at", "invitation_sent_at", "invited_by_type", "invited_by_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "fhohlberg@uc.cl"], ["encrypted_password", "$2a$11$WCS771mE/ueXc7H7d5cQTuvWsmgFW7SjFgTPI5ekU0NNxvZosuVgK"], ["created_at", "2020-11-02 18:25:38.818643"], ["updated_at", "2020-11-02 18:25:38.818643"], ["invitation_token", "6ac3d28ca264a6014b16fcb68daed9b1baeb9082d7b13f67e4707ce2cb9f655a"], ["invitation_created_at", "2020-11-02 18:25:38.817076"], ["invitation_sent_at", "2020-11-02 18:25:38.817076"], ["invited_by_type", "Client"], ["invited_by_id", 2]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering devise/mailer/invitation_instructions.html.erb
+  Rendered devise/mailer/invitation_instructions.html.erb (1.0ms)
+  Rendering devise/mailer/invitation_instructions.text.erb
+  Rendered devise/mailer/invitation_instructions.text.erb (0.6ms)
+Devise::Mailer#invitation_instructions: processed outbound mail in 691.7ms
+Sent mail to fhohlberg@uc.cl (20.2ms)
+Date: Mon, 02 Nov 2020 18:25:39 +0000
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: fhohlberg@uc.cl
+Message-ID: <5fa04f2381790_12abd0d64a290356cc@e3f1d24737c0.mail>
+Subject: Invitation instructions
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5fa04f237e844_12abd0d64a290355ec";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5fa04f237e844_12abd0d64a290355ec
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello fhohlberg@uc.cl
+
+Someone has invited you to http://localhost:3000/, you can accept it through the link below.
+
+http://localhost:3000/clients/invitation/accept?invitation_token=LyzrdjCgpeJu_D8av3S6
+
+
+If you don't want to accept the invitation, please ignore this email. Your account won't be created until you access the link above and set your password.
+
+----==_mimepart_5fa04f237e844_12abd0d64a290355ec
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello fhohlberg@uc.cl</p>
+
+<p>Someone has invited you to http://localhost:3000/, you can accept it through the link below.</p>
+
+<p><a href="http://localhost:3000/clients/invitation/accept?invitation_token=LyzrdjCgpeJu_D8av3S6">Accept invitation</a></p>
+
+
+<p>If you don&#39;t want to accept the invitation, please ignore this email. Your account won&#39;t be created until you access the link above and set your password.</p>
+
+----==_mimepart_5fa04f237e844_12abd0d64a290355ec--
+
+Redirected to http://localhost:8080/
+Completed 302 Found in 1017ms (ActiveRecord: 16.2ms)
+
+
+Started GET "/" for 172.28.0.1 at 2020-11-02 18:25:39 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  [1m[36mClient Load (2.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:37
+Completed 200 OK in 118ms (Views: 107.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:25:39 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/clients/2" for 172.28.0.1 at 2020-11-02 18:28:51 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ClientsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mClient Load (2.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clients_controller.rb:26
+  [1m[36mClient Load (2.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 ORDER BY "clients"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering clients/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Client"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/clients/show.html.erb:14
+  Rendered clients/show.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 135ms (Views: 113.9ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" for 172.28.0.1 at 2020-11-02 18:28:51 +0000
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE DATABASE "Grupo52-proyecto_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:11
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE DATABASE "Grupo52-proyecto_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3334969033128648930)[0m
+  ↳ bin/rails:11
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:11
+  [1m[36mActiveRecord::InternalMetadata Load (2.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:11
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:11
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:11
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3334969033128648930)[0m
+  ↳ bin/rails:11
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:11

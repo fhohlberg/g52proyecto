@@ -1,0 +1,40 @@
+
+<center>
+<br>
+<br>
+<br>
+<br>
+
+<div class="heading-section ftco-animate mb-5 text-center">
+<span class="subheading">foodie orders</span>
+<h1>Clientes</h1>
+</div>
+<br>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+<div class="media">
+  <div class="media-body">
+    <table class="table table">
+      <thead class="thead-light">
+        <tr>
+          <th>Mail</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @clients = Client.all %>
+        <% @clients.each do |client| %>
+          <tr>
+            <td><%= client.email %></td>
+            <% if current_admin %>
+              <td><%=link_to "<i class=material-icons md-dark>delete_sweep</i>".html_safe, client_path(client), method: :delete, data: { confirm: "¿Estás seguro?" } %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      <tbody>
+    </table>
+  </div>
+</div>

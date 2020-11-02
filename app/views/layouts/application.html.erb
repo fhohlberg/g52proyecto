@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FoodieOrders</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://colorlib.com/preview/theme/feliciano/css/bootstrap.css">
+    <link rel="stylesheet" href="https://colorlib.com/preview/theme/feliciano/css/animate.css">
+    <link rel="stylesheet" href="https://colorlib.com/preview/theme/feliciano/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://colorlib.com/preview/theme/feliciano/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://colorlib.com/preview/theme/feliciano/css/magnific-popup.css">
+    <link rel="stylesheet" href="https://colorlib.com/preview/theme/feliciano/css/aos.css">
+    <link rel="stylesheet" href="https://colorlib.com/preview/theme/feliciano/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://colorlib.com/preview/theme/feliciano/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="https://colorlib.com/preview/theme/feliciano/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="https://colorlib.com/preview/theme/feliciano/css/flaticon.css">
+    <link rel="stylesheet" href="https://colorlib.com/preview/theme/feliciano/css/icomoon.css">
+    <link rel="stylesheet" href="https://colorlib.com/preview/theme/feliciano/css/style.css">
+
+  </head>
+
+  <body>
+
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+
+    <% if current_client %>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a href="/" class="nav-link">Inicio</a></li>
+            <li class="nav-item active"><a href="/" class="nav-link">Sobre Nosotros</a></li>
+            <li class="nav-item active"><a href="/restaurantes" class="nav-link">Restaurantes</a></li>
+            <li class="nav-item active">
+              <%= link_to 'Perfil', client_path(current_client.id), class: 'nav-link' %>
+            </li>
+            <li class="nav-item cta">
+               <%= link_to 'Cerrar Sesión', destroy_client_session_path,  :class => "nav-link", :method => :delete %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <% elsif current_admin %>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a href="/" class="nav-link">Inicio</a></li>
+            <li class="nav-item active"><a href="/restaurantes" class="nav-link">Restaurantes</a></li>
+            <li class="nav-item active"><a href="/pendings" class="nav-link">Solicitudes</a></li>
+            <li class="nav-item active"><a href="/clients" class="nav-link">Clientes</a></li>
+            <li class="nav-item active"><a href="/statistics" class="nav-link">Estadisticas</a></li>
+            <li class="nav-item cta"> <%= link_to 'Cerrar Sesión', destroy_admin_session_path,  :class => "nav-link", :method => :delete %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <% else %>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a href="/" class="nav-link">Inicio</a></li>
+            <li class="nav-item active"><a href="/" class="nav-link">Sobre Nosotros</a></li>
+            <li class="nav-item active"><a href="/restaurantes" class="nav-link">Restaurantes</a></li>
+            <li class="nav-item cta"> <a class="nav-link" href="/clients/sign_in">Iniciar Sesión / Registrarse</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <% end %>
+
+    <%= yield %>
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+    <div class="container">
+    <div class="row mb-5">
+    <div class="col-md-6 col-lg-3">
+    <div class="ftco-footer-widget mb-4">
+    <h2 class="ftco-heading-2">FOODIE ORDERS</h2>
+    <p>Una nueva plataforma, donde podrás ordenar los platos de tus restaurantes favoritos de manera cómoda y rápida.</p>
+    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+    <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+    <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+    <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+    </ul>
+    </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+    <div class="ftco-footer-widget mb-4">
+    <h2 class="ftco-heading-2">Open Hours</h2>
+    <ul class="list-unstyled open-hours">
+    <li class="d-flex"><span>Lunes</span><span>9:00 - 24:00</span></li>
+    <li class="d-flex"><span>Martes</span><span>9:00 - 24:00</span></li>
+    <li class="d-flex"><span>Miércoles</span><span>9:00 - 24:00</span></li>
+    <li class="d-flex"><span>Jueves</span><span>9:00 - 24:00</span></li>
+    <li class="d-flex"><span>Viernes</span><span>9:00 - 02:00</span></li>
+    <li class="d-flex"><span>Sábadp</span><span>9:00 - 02:00</span></li>
+    <li class="d-flex"><span>Domingo</span><span> 9:00 - 02:00</span></li>
+    </ul>
+    </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+    <div class="ftco-footer-widget mb-4">
+    <h2 class="ftco-heading-2">Instagram</h2>
+    <div class="thumb d-sm-flex">
+    <a href="#" class="thumb-menu img" style="background-image: url(https://colorlib.com/preview/theme/feliciano/images/insta-1.jpg);">
+    </a>
+    <a href="#" class="thumb-menu img" style="background-image: url(https://colorlib.com/preview/theme/feliciano/images/insta-2.jpg);">
+    </a>
+    <a href="#" class="thumb-menu img" style="background-image: url(https://colorlib.com/preview/theme/feliciano/images/insta-3.jpg);">
+    </a>
+    </div>
+    <div class="thumb d-flex">
+    <a href="#" class="thumb-menu img" style="background-image: url(https://colorlib.com/preview/theme/feliciano/images/insta-4.jpg);">
+    </a>
+    <a href="#" class="thumb-menu img" style="background-image: url(https://colorlib.com/preview/theme/feliciano/images/insta-5.jpg);">
+    </a>
+    <a href="#" class="thumb-menu img" style="background-image: url(https://colorlib.com/preview/theme/feliciano/images/insta-6.jpg);">
+    </a>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+    <div class="ftco-footer-widget mb-4">
+    <h2 class="ftco-heading-2">Novedades</h2>
+    <p>Para poder realizar órdenes y recibir ofertas y promociones ingresar/registrate aqui:</p>
+    <%= link_to 'Ingresar / Registrarse', new_client_session_path , class:"btn btn-secondary js-scroll-trigger"%>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-12 text-center">
+    <p>
+    Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="1de48e9da5cf40243b130f7c-text/javascript">document.write(new Date().getFullYear());</script> All rights reserved | Grupo 52 - Ingeniería de Software
+    </p>
+    </div>
+    </div>
+    </footer>
+
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    <script src="https://colorlib.com/preview/theme/feliciano/js/jquery.min.js" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+    <script src="https://colorlib.com/preview/theme/feliciano/js/jquery-migrate-3.0.1.min.js" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+    <script src="https://colorlib.com/preview/theme/feliciano/js/popper.min.js" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+    <script src="https://colorlib.com/preview/theme/feliciano/js/bootstrap.min.js" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+    <script src="https://colorlib.com/preview/theme/feliciano/js/jquery.easing.1.3.js" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+    <script src="https://colorlib.com/preview/theme/feliciano/js/jquery.waypoints.min.js" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+    <script src="https://colorlib.com/preview/theme/feliciano/js/jquery.stellar.min.js" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+    <script src="https://colorlib.com/preview/theme/feliciano/js/owl.carousel.min.js" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+    <script src="https://colorlib.com/preview/theme/feliciano/js/jquery.magnific-popup.min.js" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+    <script src="https://colorlib.com/preview/theme/feliciano/js/aos.js" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+    <script src="https://colorlib.com/preview/theme/feliciano/js/jquery.animateNumber.min.js" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+    <script src="https://colorlib.com/preview/theme/feliciano/js/bootstrap-datepicker.js" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+    <script src="https://colorlib.com/preview/theme/feliciano/js/jquery.timepicker.min.js" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+    <script src="https://colorlib.com/preview/theme/feliciano/js/scrollax.min.js" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+    <script src="https://colorlib.com/preview/theme/feliciano/js/google-map.js" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+    <script src="https://colorlib.com/preview/theme/feliciano/js/main.js" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="1de48e9da5cf40243b130f7c-text/javascript"></script>
+    <script type="1de48e9da5cf40243b130f7c-text/javascript">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-23581568-13');
+    </script>
+    <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/95c75768/cloudflare-static/rocket-loader.min.js" data-cf-settings="1de48e9da5cf40243b130f7c-|49" defer=""></script>
+
+
+  </body>
+</html>

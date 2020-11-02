@@ -1,0 +1,76 @@
+<section class="ftco-section img" style="background-image: url(https://colorlib.com/preview/theme/feliciano/images/bg_3.jpg)" data-stellar-background-ratio="0.5">
+  <%= form_with(model: [@restaurante, plate], local: true) do |form| %>
+    <% if plate.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(plate.errors.count, "error") %> prohibited this plate from being saved:</h2>
+
+        <ul>
+        <% plate.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="container">
+    <div class="row d-flex">
+    <div class="col-md-7 ftco-animate makereservation p-4 px-md-5 pb-md-5">
+    <div class="heading-section ftco-animate mb-5 text-center">
+    <span class="subheading">foodie order</span>
+    <h2 class="mb-4">Datos Plato</h2>
+    </div>
+
+    <div class="row">
+    <div class="col-md-4">
+    <div class="form-group">
+      <div class="field">
+        <%= form.label :name, 'Nombre del Plato:' %>
+        <%= form.text_field :name %>
+      </div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="form-group">
+      <div class="field">
+        <%= form.label :price, 'Precio:' %>
+        <%= form.number_field :price %>
+      </div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="form-group">
+      <div class="field">
+        <%= form.label :description, 'Descripción:' %>
+        <%= form.text_field :description %>
+      </div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="form-group">
+      <div class="field">
+        <%= form.label :portions, 'Porciones'%>
+        <%= form.number_field :portions %>
+      </div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="form-group">
+      <div class="field">
+        <%= form.label :image, 'Agregar imagen:' %>
+        <%= form.file_field :avatar %>
+      </div>
+    </div>
+    </div>
+    <div class="col-md-12 mt-3">
+    <div class="form-group text-center">
+      <div class="actions">
+        <%= form.submit "Confirmar", value: "Confirmar", class: "btn btn-primary py-3 px-5"%>
+      </div>
+      <% end %>
+      <%= link_to 'Atrás', restaurante_plates_path(@restaurante) %>
+    </div>
+    </div>
+     </div>
+    </div>
+    </div>
+</section>

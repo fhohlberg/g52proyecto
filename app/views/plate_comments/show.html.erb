@@ -1,0 +1,29 @@
+<center>
+<br>
+<br>
+<br>
+<br>
+
+<p id="notice"><%= notice %></p>
+<div class="heading-section ftco-animate mb-5 text-center">
+<span class="subheading"><%=@plate.name%></span>
+<h1>Comentario al plato: </h1>
+</div>
+
+<p>
+  <strong>Comentario:</strong>
+  <%= @plate_comment.body %>
+</p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @plate_comment.client_name %>
+</p>
+
+<% if current_client %>
+  <% if current_client.id == @plate_comment.client_id %>
+    <td><%= link_to 'Editar', edit_restaurante_plate_plate_comment_path(@restaurante, @plate, @plate_comment) %></td> |
+    <td><%= link_to 'Eliminar', restaurante_plate_plate_comment_path(@restaurante, @plate, @plate_comment), method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+  <% end %>
+<% end %>|
+<%= link_to 'Atrás', restaurante_plate_plate_comments_path(@restaurante, @plate) %>

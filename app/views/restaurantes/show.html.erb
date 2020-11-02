@@ -1,0 +1,123 @@
+<center>
+<br>
+<br>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+<p id="notice"><%= notice %></p>
+<section class="ftco-section ftco-wrap-about">
+<div class="heading-section ftco-animate mb-5 text-center">
+<span class="subheading"><%=@restaurante.name%></span>
+</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 wrap-about pt-5 pt-md-5 pb-md-3 ftco-animate">
+          <% if @restaurante.avatar.attached? %>
+            <image  src="<%=(url_for(@restaurante.avatar))%>" alt= "{{ row.2 }}" width="300" height="249" />
+          <% end %>
+      </div>
+
+      <div class="col-md-4 wrap-about pt-5 pt-md-5 pb-md-3 ftco-animate">
+        <p>
+          <strong>Nombre:</strong>
+          <%= @restaurante.name %>
+        </p>
+
+        <p>
+          <strong>Mail:</strong>
+          <%= @restaurante.mail %>
+        </p>
+
+        <p>
+          <strong>Dirección:</strong>
+          <%= @restaurante.adress %>
+        </p>
+
+        <p>
+          <strong>Valoración promedio:</strong><br>
+          <% if !(@restaurante.valoration1) || @restaurante.valoration1 == 0 %>
+            <% 5.times do %>
+              <i class=material-icons>star_border</i>
+            <% end %>
+            <br>
+            No hay valoraciones
+          <% else %>
+            <% @restaurante.valoration1.to_i.times do %>
+              <i class=material-icons>star</i>
+            <% end %>
+            <% (5 - @restaurante.valoration1.to_i).times do %>
+              <i class=material-icons>star_border</i>
+            <% end %>
+            <br>
+            <%= @restaurante.ratings.length() %> valoracion/es
+          <% end%>
+        </p>
+
+        <p>
+          <strong>Teléfono:</strong>
+          <%= @restaurante.phone_number %>
+        </p>
+        <% if current_client %>
+          <% if !(current_client.favs.include?(@restaurante.id.to_s)) %>
+            <p><%= link_to "<i class=material-icons>favorite_border</i>".html_safe, restaurantes_favourites_path(:id => @restaurante), method: :post %></p>
+
+          <% else %>
+            <p><%= link_to "<i class=material-icons>favorite</i>".html_safe, restaurantes_unfavourites_path(:id => @restaurante), method: :post  %></p>
+
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="col-md-4 wrap-about pt-5 pt-md-5 pb-md-3 ftco-animate">
+        <div class="heading-section mb-4 my-5 my-md-0">
+          <p><%= link_to "<i class=material-icons>ballot</i> Ver Platos".html_safe, restaurante_plates_path(@restaurante), method: :get %></p>
+          <p><%= link_to "<i class=material-icons>insert_comment</i> Ver Comentarios".html_safe, restaurante_restaurant_comments_path(@restaurante), method: :get %></p>
+          <% if current_client %>
+            <p><%= link_to '<i class=material-icons>shopping_cart</i> Crear Orden'.html_safe, new_restaurante_order_path(@restaurante) %></p>
+
+            <% if current_client.id == @restaurante.client_id %>
+              <p><%= link_to '<i class=material-icons>ballot</i> Ver mis Órdenes'.html_safe, restaurante_orders_path(@restaurante) %></p>
+
+            <% end %>
+          <% end %>
+
+          <% if current_client %>
+            <% if current_client.id == @restaurante.client_id %>
+              <p><%= link_to '<i class=material-icons>edit</i> Editar'.html_safe, edit_restaurante_path(@restaurante) %></p>
+            <% end %>
+
+            <strong><a href="">Mi Valoración</a></strong><br>
+            <% if !(@restaurante.clients_ratings.include?(current_client.id.to_s))%>
+              <% 5.times do %>
+                <%= link_to '<i class=material-icons>star_border</i>'.html_safe, restaurante_path(@restaurante)%>
+              <% end %>
+              <br>
+              <a href="">Sin estrellas</a>
+            <% else %>
+              <% @restaurante.ratings[@restaurante.clients_ratings.find_index(current_client.id.to_s)].to_i.times do %>
+                <%= link_to '<i class=material-icons>star</i>'.html_safe, restaurante_path(@restaurante)%>
+              <% end %>
+              <% (5 - @restaurante.ratings[@restaurante.clients_ratings.find_index(current_client.id.to_s)].to_i).times do %>
+                <%= link_to '<i class=material-icons>star_border</i>'.html_safe, restaurante_path(@restaurante)%>
+              <% end %>
+              <br>
+              <a href=""><%=@restaurante.ratings[@restaurante.clients_ratings.find_index(current_client.id.to_s)]%></a>
+            <% end%>
+            <br>
+            <%= form_tag(restaurantes_rating_path, method: :post) do |form| %>
+            <div class="form-group">
+              <div class="field">
+              <%= select_tag(:rate, options_for_select(['Sin valoración', '1 estrella','2 estrellas','3 estrellas','4 estrellas','5 estrellas']),{:prompt => "Actualizar valoración", onchange: 'this.form.submit();'}) %>
+              <%= hidden_field_tag(:id, @restaurante.id)%>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+        <p><%= link_to 'Atrás', restaurantes_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width: 80%"><iframe width="80%" height="350" src="https://maps.google.com/maps?width=70%&height=350&hl=es&q=<%= @restaurante.adress %>+()&ie=UTF8&t=&z=14&iwloc=B&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><br />
+</section>

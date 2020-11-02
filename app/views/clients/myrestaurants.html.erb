@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+<center>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<br>
+<br>
+<br>
+<br>
+
+<p id="notice"><%= notice %></p>
+<div class="heading-section ftco-animate mb-5 text-center">
+<span class="subheading"><%=current_client.username%></span>
+<h1>Mis Restaurantes</h1>
+
+<div class="media">
+  <div class="media-body">
+    <table class="table table">
+      <thead class="thead-light">
+        <tr>
+          <th>Nombre</th>
+          <th>Mail</th>
+          <th>Dirección</th>
+          <th>Valoración</th>
+          <th>Teléfono</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @restaurantes.each do |restaurante| %>
+          <tr>
+            <% if current_client.id == restaurante.client_id %>
+              <td><%= restaurante.name %></td>
+              <td><%= restaurante.mail %></td>
+              <td><%= restaurante.adress %></td>
+              <td><%= restaurante.valoration %></td>
+              <td><%= restaurante.phone_number %></td>
+              <td><%= link_to "<i class=material-icons md-dark>visibility</i>".html_safe, restaurante%></td>
+              <% if current_client %>
+                <% if current_client.id == restaurante.client_id %>
+                  <td><%= link_to "<i class=material-icons md-dark>delete_sweep</i>".html_safe, restaurante, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+                <% end %>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      <tbody>
+    </table>
+  </div>
+</div>
+
+<br>
+
+<%= link_to 'Atrás', client_path(current_client.id) %>

@@ -1,0 +1,11 @@
+$(document).ready(function(){
+    $.ajax({
+      url: $('model').attr('action'),
+      success: function(data){
+        alert(data);
+      },
+      error: function(){
+        alert('failure');
+      }
+    });
+});
